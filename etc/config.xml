@@ -1,0 +1,14 @@
+<?xml version="1.0"?>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:module:Magento_Store:etc/config.xsd">
+    <default>
+        <catalog>
+            <web>
+                <url>
+                    <catalog_media_url_format_custom></catalog_media_url_format_custom>
+                    <catalog_media_url_format_custom_imgproxy_source_type>url</catalog_media_url_format_custom_imgproxy_source_type>
+                    <catalog_media_url_format_custom_imgproxy_resize>fit</catalog_media_url_format_custom_imgproxy_resize>
+                </url>
+            </web>
+        </catalog>
+    </default>
+</config>

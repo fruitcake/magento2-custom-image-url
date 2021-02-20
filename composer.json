@@ -1,0 +1,41 @@
+{
+  "name": "fruitcake/magento2-custom-image-url",
+  "description": "Magento2 Custom Image URLS for the catalog",
+  "keywords": [
+    "magento",
+    "magento2",
+    "image",
+    "catalog",
+    "cdn",
+    "imgproxy"
+  ],
+  "license": [
+    "MIT"
+  ],
+  "type": "magento2-module",
+  "version": "1.0.0",
+  "authors": [
+    {
+      "name": "Fruitcake",
+      "email": "info@fruitcake.nl"
+    }
+  ],
+  "require": {
+    "php": "^7"
+  },
+  "autoload": {
+    "files": [
+      "registration.php"
+    ],
+    "psr-4": {
+      "Fruitcake\\CustomImageUrl\\": ""
+    }
+  },
+  "minimum-stability": "dev",
+  "prefer-stable": true,
+  "extra": {
+    "branch-alias": {
+      "dev-master": "1.0-dev"
+    }
+  }
+}
