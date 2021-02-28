@@ -48,6 +48,7 @@ class Data extends AbstractHelper
         }
 
         $params = $image->getImageTransformationParameters();
+        $params['file_path'] = $image->getFilePath();
 
         if ($customType === CustomConfig::TYPE_PATTERN) {
             return $this->getCustomUrlFromPattern($imageUrl, $params);
@@ -67,9 +68,11 @@ class Data extends AbstractHelper
         $customUrl = $this->customConfig->getCustomPattern();
 
         $urlParts = parse_url($imageUrl);
-        $params = $params + $urlParts;
+        foreach ($urlParts as $part => $value) {
+            $params['url_' . $part] = $value;
+        }
 
-        $params['path'] = ltrim($params['path'], '/');
+        $params['path'] = ltrim($params['url_path'], '/');
         $params['base_url'] = $this->getBaseUrl();
         $params['base_url_media'] = $this->getMediaBaseUrl();
         $params['image_url'] = explode('?', $imageUrl)[0];
