@@ -28,6 +28,10 @@ class ImgproxySourceType implements \Magento\Framework\Data\OptionSourceInterfac
                 'label' => __('URL: Proxy the default URL')
             ],
             [
+                'value' => CustomConfig::IMGPROXY_CUSTOM_URL,
+                'label' => __('Custom URL: Proxy an url other than the default URL')
+            ],
+            [
                 'value' => CustomConfig::IMGPROXY_LOCAL,
                 'label' => __('Local: Pass the local path')
             ],

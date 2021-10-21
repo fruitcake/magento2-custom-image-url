@@ -66,6 +66,14 @@
                     </depends>
                     <comment><![CDATA[For s3, provide both the bucket and optional prefix.]]></comment>
                 </field>
+                <field id="catalog_media_url_format_custom_imgproxy_source_custom_url" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+                    <label>Imgproxy Source Custom URL</label>
+                    <depends>
+                        <field id="catalog_media_url_format_custom_type">imgproxy</field>
+                        <field id="catalog_media_url_format_custom_imgproxy_source_type" separator=",">custom_url</field>
+                    </depends>
+                    <comment><![CDATA[Enter a custom URL to proxy.]]></comment>
+                </field>
             </group>
         </section>
     </system>
