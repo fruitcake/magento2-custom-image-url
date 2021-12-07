@@ -25,12 +25,14 @@ class CustomConfig
 
     public const XML_PATH_CATALOG_MEDIA_URL_FORMAT_CUSTOM_IMGPROXY_SOURCE_TYPE = 'web/url/catalog_media_url_format_custom_imgproxy_source_type';
     public const XML_PATH_CATALOG_MEDIA_URL_FORMAT_CUSTOM_IMGPROXY_SOURCE_PREFIX = 'web/url/catalog_media_url_format_custom_imgproxy_source_prefix';
+    public const XML_PATH_CATALOG_MEDIA_URL_FORMAT_CUSTOM_IMGPROXY_SOURCE_CUSTOM_URL = 'web/url/catalog_media_url_format_custom_imgproxy_source_custom_url';
 
     public const TYPE_DEFAULT = 'default';
     public const TYPE_PATTERN = 'pattern';
     public const TYPE_IMGPROXY = 'imgproxy';
 
     public const IMGPROXY_URL = 'url';
+    public const IMGPROXY_CUSTOM_URL = 'custom_url';
     public const IMGPROXY_LOCAL = 'local';
     public const IMGPROXY_S3 = 's3';
 
@@ -108,6 +110,14 @@ class CustomConfig
         ) ?: '';
     }
 
+    public function getImgproxySourceCustomUrl($storeId = null): string
+    {
+        return $this->scopeConfig->getValue(
+            self::XML_PATH_CATALOG_MEDIA_URL_FORMAT_CUSTOM_IMGPROXY_SOURCE_CUSTOM_URL,
+            ScopeInterface::SCOPE_STORE,
+            $storeId
+        ) ?: '';
+    }
 
     public function getImgproxyKey($storeId = null): string
     {

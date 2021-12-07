@@ -7,7 +7,7 @@ use Magento\Catalog\Model\View\Asset\Image;
 
 class AssetImagePlugin
 {
-    /** @var $helper */
+    /** @var Data $helper */
     private $helper;
 
     public function __construct(Data $helper)

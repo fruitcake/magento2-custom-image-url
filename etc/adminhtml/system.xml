@@ -13,6 +13,7 @@
                 <field id="catalog_media_url_format_custom_pattern" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Custom URL format</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">pattern</field>
                     </depends>
                     <comment><![CDATA[Custom format to add dynamic parameters.<br/>
@@ -23,6 +24,7 @@
                 <field id="catalog_media_url_format_custom_imgproxy_host" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Host</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                     </depends>
                     <comment><![CDATA[The host the Imgproxy instance can be reached, eg https://example.com:8080/]]></comment>
@@ -30,6 +32,7 @@
                 <field id="catalog_media_url_format_custom_imgproxy_key" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Key</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                     </depends>
                     <comment><![CDATA[The IMGPROXY_KEY value, if signing is required]]></comment>
@@ -37,6 +40,7 @@
                 <field id="catalog_media_url_format_custom_imgproxy_salt" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Salt</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                     </depends>
                     <comment><![CDATA[The IMGPROXY_SALT value, if signing is required]]></comment>
@@ -44,15 +48,16 @@
                 <field id="catalog_media_url_format_custom_imgproxy_resize" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Resize Type</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                     </depends>
                     <source_model>Fruitcake\CustomImageUrl\Model\Config\Source\ImgproxyResizeType</source_model>
-
                     <comment><![CDATA[The Resize type]]></comment>
                 </field>
                 <field id="catalog_media_url_format_custom_imgproxy_source_type" translate="label comment" type="select" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Source Type</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                     </depends>
                     <source_model>Fruitcake\CustomImageUrl\Model\Config\Source\ImgproxySourceType</source_model>
@@ -61,10 +66,20 @@
                 <field id="catalog_media_url_format_custom_imgproxy_source_prefix" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
                     <label>Imgproxy Source Prefix</label>
                     <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
                         <field id="catalog_media_url_format_custom_type">imgproxy</field>
                         <field id="catalog_media_url_format_custom_imgproxy_source_type" separator=",">local,s3</field>
                     </depends>
                     <comment><![CDATA[For s3, provide both the bucket and optional prefix.]]></comment>
+                </field>
+                <field id="catalog_media_url_format_custom_imgproxy_source_custom_url" translate="label comment" type="text" sortOrder="30" showInDefault="1" showInWebsite="1" showInStore="1" canRestore="0">
+                    <label>Imgproxy Source Custom URL</label>
+                    <depends>
+                        <field id="catalog_media_url_format">image_optimization_parameters</field>
+                        <field id="catalog_media_url_format_custom_type">imgproxy</field>
+                        <field id="catalog_media_url_format_custom_imgproxy_source_type" separator=",">custom_url</field>
+                    </depends>
+                    <comment><![CDATA[Enter a custom URL to proxy.]]></comment>
                 </field>
             </group>
         </section>
