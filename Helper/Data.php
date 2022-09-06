@@ -118,6 +118,9 @@ class Data extends AbstractHelper
                 $path = $prefix . '/' . $path;
             }
             $sourceUrl = 'local:///' . $path;
+        } elseif ($this->customConfig->getImgproxySourceType() === CustomConfig::IMGPROXY_CUSTOM_URL) {
+            $proxyUrl = trim($this->customConfig->getImgproxySourceCustomUrl(), '/');
+            $sourceUrl = $proxyUrl . '/' . $path;
         } else {
             $sourceUrl = $imageUrl;
         }
