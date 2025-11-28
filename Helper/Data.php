@@ -16,13 +16,13 @@ use Magento\Store\Model\StoreManagerInterface;
 class Data extends AbstractHelper
 {
 
-    /** @var CatalogMediaConfig  */
+    /** @var CatalogMediaConfig */
     private $catalogMediaConfig;
 
-    /** @var CustomConfig  */
+    /** @var CustomConfig */
     private $customConfig;
 
-    /** @var StoreManagerInterface  */
+    /** @var StoreManagerInterface */
     private $storeManager;
 
     public function __construct(
@@ -79,11 +79,11 @@ class Data extends AbstractHelper
 
         foreach ($params as $k => $v) {
             $k = str_replace('-', '_', $k);
-            if (strpos($customUrl, '{{'.$k) !== false) {
-                $customUrl = str_replace('{{'.$k.'}}', $v, $customUrl);
-                $customUrl = str_replace('{{'.$k.'|urlencode}}', urlencode($v), $customUrl);
-                $customUrl = str_replace('{{'.$k.'|rawurlencode}}', rawurlencode($v), $customUrl);
-                $customUrl = str_replace('{{'.$k.'|base64}}', base64_encode($v), $customUrl);
+            if (strpos($customUrl, '{{' . $k) !== false) {
+                $customUrl = str_replace('{{' . $k . '}}', $v, $customUrl);
+                $customUrl = str_replace('{{' . $k . '|urlencode}}', urlencode($v), $customUrl);
+                $customUrl = str_replace('{{' . $k . '|rawurlencode}}', rawurlencode($v), $customUrl);
+                $customUrl = str_replace('{{' . $k . '|base64}}', base64_encode($v), $customUrl);
             }
         }
 
@@ -142,17 +142,17 @@ class Data extends AbstractHelper
 
     private function signImgproxyPath(string $path, string $key, string $salt): string
     {
-        $keyBin = pack("H*" , $key);
-        if(empty($keyBin)) {
+        $keyBin = pack("H*", $key);
+        if (empty($keyBin)) {
             throw new \RuntimeException('Key expected to be hex-encoded string');
         }
 
-        $saltBin = pack("H*" , $salt);
-        if(empty($saltBin)) {
+        $saltBin = pack("H*", $salt);
+        if (empty($saltBin)) {
             throw new \RuntimeException('Salt expected to be hex-encoded string');
         }
 
-        $signature = rtrim(strtr(base64_encode(hash_hmac('sha256', $saltBin.$path, $keyBin, true)), '+/', '-_'), '=');
+        $signature = rtrim(strtr(base64_encode(hash_hmac('sha256', $saltBin . $path, $keyBin, true)), '+/', '-_'), '=');
 
         return sprintf("/%s%s", $signature, $path);
     }
@@ -165,7 +165,10 @@ class Data extends AbstractHelper
     private function getCustomUrlType($storeId = null)
     {
         // When Dynamic hashing is disabled, return false
-        if ($this->catalogMediaConfig->getMediaUrlFormat(ScopeInterface::SCOPE_STORE, $storeId) !== CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS) {
+        if ($this->catalogMediaConfig->getMediaUrlFormat(
+                ScopeInterface::SCOPE_STORE,
+                $storeId
+            ) !== CatalogMediaConfig::IMAGE_OPTIMIZATION_PARAMETERS) {
             return CustomConfig::TYPE_DEFAULT;
         }
 
